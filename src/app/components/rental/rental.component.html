@@ -1,0 +1,27 @@
+<table class= "table table-warning table-striped">
+    <thead class="table-info"> 
+        <tr>
+          <th>Id</th>
+          <th>Müşteri Id</th>
+          <th>Marka</th>
+          <th>Araba</th>
+          <th>Müşteri</th>
+          <th>Şirket</th>
+          <th>Kiralama Tarihi</th>
+          <th>Teslim Tarihi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor= "let rental of rentalDetails">
+            <td>{{rental.rentalId}}</td>
+            <td>{{rental.customerId}}</td>
+            <td>{{rental.brandName}}</td>
+            <td>{{rental.carName}}</td>
+            <td>{{rental.customerName}}</td>
+            <td>{{rental.companyName}}</td>
+            <td>{{rental.rentDate}}</td>
+            <td>{{rental.returnDate}}</td>
+          </tr>
+      </tbody>
+
+</table>

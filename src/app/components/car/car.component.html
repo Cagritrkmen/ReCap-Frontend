@@ -1,0 +1,24 @@
+<table class= "table table-warning table-striped">
+    <thead class="table-info">
+      <tr>
+        <th>Id</th>
+        <th>Marka</th>
+        <th>Araba</th>
+        <th>Renk</th>
+        <th>Model</th>
+        <th>Fiyat</th>
+        <th>Bilgilendirme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of carDetails" >
+        <td>{{car.carId}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.carName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.modelYear}}</td>
+        <td>{{car.dailyPrice}}</td>
+        <td>{{car.description}}</td>
+      </tr>
+    </tbody>
+  </table>
