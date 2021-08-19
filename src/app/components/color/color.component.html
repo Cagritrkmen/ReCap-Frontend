@@ -1,4 +1,6 @@
 <ul class="list-group">
-    <li class="list-group-item active" aria-current="true">Renkler</li>
-    <li *ngFor="let color of colors" class="list-group-item list-group-item-action list-group-item-warning">{{color.colorName}}</li>
-  </ul>
+  <li class="list-group-item list-group-item-info" aria-current="true"><strong>Renkler</strong></li>
+  <li (click)="setCurrentColor(color)" *ngFor="let color of colors"
+  routerLink = "/cars/color/{{color.colorId}}"
+  [class]="getCurrentColorClass(color)">{{color.colorName}}</li>
+</ul>
