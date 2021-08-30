@@ -1,6 +1,10 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label"><strong>Renk Bul</strong></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="renk giriniz">
+</div> 
 <ul class="list-group">
-  <li class="list-group-item list-group-item-info" aria-current="true"><strong>Renkler</strong></li>
-  <li (click)="setCurrentColor(color)" *ngFor="let color of colors"
+  <li class="list-group-item list-group-item-info" aria-current="true"><p class="text-dark" ><strong>Renkler</strong></p></li>
+  <li (click)="setCurrentColor(color)" *ngFor="let color of colors | colorFilterPipe:filterText"
   routerLink = "/cars/color/{{color.colorId}}"
   [class]="getCurrentColorClass(color)">{{color.colorName}}</li>
 </ul>

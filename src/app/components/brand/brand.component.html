@@ -1,8 +1,15 @@
+<li [class] ="getAllBrandClass()" aria-current="true" routerLink = "/cars"  ><p class="text-dark" ><strong>Tüm Arabalar</strong></p></li>
+  <br>
+<div class="mb-3">
+  <label for="filterText" class="form-label"><strong>Marka Bul</strong></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="marka ismi giriniz">
+</div> 
+
 <ul class="list-group">
-    <li [class] ="getAllBrandClass()" aria-current="true" routerLink = "/cars" aria-current="true"><strong>Tüm Arabalar</strong></li>
-    <br>
-    <li class="list-group-item list-group-item-info" aria-current="true"><strong>Markalar</strong></li>
-    <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands"
+  
+    <li class="list-group-item list-group-item-info" aria-current="true"><p class="text-dark" ><strong>Markalar</strong></p></li>
+    <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands| brandFilterPipe:filterText"
      routerLink = "/cars/brand/{{brand.brandId}}"
     [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
-  </ul>
+</ul>
+ 

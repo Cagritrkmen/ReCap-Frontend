@@ -1,24 +1,50 @@
-<table class= "table table-warning table-striped">
-    <thead class="table-info">
-      <tr>
-        <th>Id</th>
-        <th>Marka</th>
-        <th>Araba</th>
-        <th>Renk</th>
-        <th>Model</th>
-        <th>Fiyat</th>
-        <th>Bilgilendirme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let car of carDetails" >
-        <td>{{car.carId}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.carName}}</td>
-        <td>{{car.colorName}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="mb-3">
+  <label for="filterText" class="form-label"><strong>Araba Bul</strong></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="araba adı veya marka ismi giriniz">
+</div> 
+
+<app-car-filtered></app-car-filtered>
+
+<div class="row">
+  <div
+    *ngFor="let carDetail of carDetails | carFilterPipe:filterText"
+    class="card col-3"
+    style="width: 30%; margin: 8px"
+  >
+    <!-- <img 
+      src="http://localhost:2958{{carDetail.imagePath}}"
+      class="card-img-top"
+      alt="CarImage"
+    /> -->
+
+    <img [src]="carDetail.imagePath.length!==0 ? defaultPath+carDetail.imagePath[0]:defaultPath+defaultImg" class="card-img-top" alt="..." />
+        <div class="card-body">
+      <h5 class="card-title">
+        {{ carDetail.brandName | uppercase }} {{ carDetail.carName }}
+      </h5>
+      <p class="card-text">{{ carDetail.description }}</p>
+    </div>
+    <section style="float: inline-end; margin-bottom: 8px">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Model Year : {{ carDetail.modelYear }}</li>
+        <li class="list-group-item">
+          Price : {{ carDetail.dailyPrice | currency }} / day
+        </li>
+        <li class="list-group-item">Color : {{ carDetail.colorName }}</li>
+      </ul>
+      <div class="card-body">
+        <section style="float: right">
+          <button  class="btn btn-success">Rent</button>
+        </section>
+        <section style="float: left">
+          <button
+            type="button"
+            routerLink="/car-detail/{{ carDetail.carId }}"
+            class="btn btn-secondary"
+          >
+            Details
+          </button>
+        </section>
+      </div>
+    </section>
+  </div>

@@ -7,4 +7,5 @@ export interface RentalDetail{
     companyName:string;
     rentDate:Date;
     returnDate:Date;
+    totalPrice:number;
 }

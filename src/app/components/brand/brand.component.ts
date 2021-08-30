@@ -8,6 +8,7 @@ import { BrandService } from 'src/app/services/brand.service';
   styleUrls: ['./brand.component.css'],
 })
 export class BrandComponent implements OnInit {
+  filterText:"";
   currentBrand:Brand;
   brands: Brand[] = [];
   constructor(private brandService: BrandService) {}

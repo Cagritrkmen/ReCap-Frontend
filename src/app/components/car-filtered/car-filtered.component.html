@@ -1,0 +1,41 @@
+<div class="filter">
+  <div class="row">
+    <div class="col-md-5">
+      <select class="form-select" id="brandselect" [(ngModel)]="currentBrandId">
+        <option [ngValue]="undefined" disabled selected>
+          --- Bir Marka Seçiniz ---
+        </option>
+        <option
+          *ngFor="let brand of brands"
+          [value]="brand.brandId"
+          [selected]="setCurrentBrand(brand.brandId)">{{ brand.brandName }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <select class="form-select" id="colorselect" [(ngModel)]="currentColorId">
+        <option [ngValue]="undefined" disabled selected>
+          --- Bir Renk Seçiniz ---
+        </option>
+        <option
+          *ngFor="let color of colors"
+          [value]="color.colorId"
+          [selected]="setCurrentColor(color.colorId)"
+        >
+          {{ color.colorName }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <button
+        class="btn btn-danger"
+        routerLink="/cars/filter/{{ currentBrandId }}/{{ currentColorId }}"
+      >
+        Filtrele
+      </button>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-warning" routerLink="/cars">Temizle</button>
+    </div>
+  </div>
+</div>
